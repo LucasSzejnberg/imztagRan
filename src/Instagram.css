@@ -1,0 +1,62 @@
+/* Estilos generales para el contenedor del login */
+.instagram-login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fafafa;
+  }
+  
+  .instagram-login-box {
+    width: 350px;
+    padding: 40px;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    text-align: center;
+  }
+  
+  .instagram-logo {
+    font-family: 'Billabong', cursive;
+    font-size: 50px;
+    margin-bottom: 30px;
+    color: #262626;
+  }
+  
+  /* Estilos para los campos de entrada */
+  .instagram-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    background-color: #1d1111;
+    font-size: 14px;
+  }
+  
+  .instagram-form input:focus {
+    outline: none;
+    border-color: #a8a8a8;
+  }
+  
+  /* Estilo para el botón de enviar */
+  .instagram-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0095f6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .instagram-form button:hover {
+    background-color: #0077cc;
+  }
+  
+  /* Mensaje de éxito */
+  .success-message {
+    color: #27ae60;
+    margin-top: 20px;
+  }
+  
